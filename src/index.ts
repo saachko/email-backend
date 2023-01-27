@@ -1,10 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
+import corsResolver from './corsResolver';
+
 const PORT = 3001;
 
 const app = express();
 app.use(express.json());
+app.use(corsResolver);
 
 const start = async () => {
   try {
