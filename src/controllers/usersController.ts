@@ -1,9 +1,14 @@
 import { Response, Request } from 'express';
+import { validationResult } from 'express-validator';
 
 import User from '../models/user';
 
 const logIn = async (request: Request, response: Response) => {
   try {
+    const validationErrors = validationResult(request);
+    if (!validationErrors.isEmpty()) {
+      response.status(400).json({ message: 'Registration error', validationErrors });
+    }
     const { username } = request.body;
     const user = await User.findOne({ username });
     if (!user) {
