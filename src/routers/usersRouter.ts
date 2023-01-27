@@ -1,7 +1,7 @@
 import express from 'express';
 import { check } from 'express-validator';
 
-import { logIn } from '../controllers/usersController';
+import { getUserById, getUsers, logIn } from '../controllers/usersController';
 
 const usersRouter = express.Router();
 usersRouter.post(
@@ -9,7 +9,7 @@ usersRouter.post(
   [check('username', "Username can't be empty").notEmpty()],
   logIn
 );
-usersRouter.get('/');
-usersRouter.get('/:id');
+usersRouter.get('/', getUsers);
+usersRouter.get('/:id', getUserById);
 
 export default usersRouter;

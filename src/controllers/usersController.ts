@@ -1,5 +1,6 @@
 import { Response, Request } from 'express';
 import { validationResult } from 'express-validator';
+import { ObjectId } from 'mongodb';
 
 import User from '../models/user';
 
@@ -25,4 +26,23 @@ const logIn = async (request: Request, response: Response) => {
   }
 };
 
-export { logIn };
+const getUsers = async (request: Request, response: Response) => {
+  try {
+    const users = await User.find();
+    response.json(users);
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
+const getUserById = async (request: Request, response: Response) => {
+  try {
+    const userId = new ObjectId(request.params.id);
+    const user = await User.findById(userId);
+    response.json(user);
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
+export { logIn, getUsers, getUserById };
