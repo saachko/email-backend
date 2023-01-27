@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import corsResolver from './corsResolver';
+import messagesRouter from './routers/messagesRouter';
 import usersRouter from './routers/usersRouter';
 
 const PORT = 3001;
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(corsResolver);
 app.use('/users', usersRouter);
+app.use('/messages', messagesRouter);
 
 const start = async () => {
   try {
