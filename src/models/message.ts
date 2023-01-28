@@ -10,10 +10,6 @@ const messageScheme = new Schema(
       type: String,
       required: true,
     },
-    date: {
-      type: String,
-      required: true,
-    },
     sender: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -25,7 +21,7 @@ const messageScheme = new Schema(
       required: true,
     },
   },
-  { versionKey: false }
+  { timestamps: true, versionKey: false }
 );
 
 export default mongoose.model('Message', messageScheme);
