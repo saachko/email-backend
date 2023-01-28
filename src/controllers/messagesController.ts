@@ -1,4 +1,5 @@
 import { Response, Request } from 'express';
+import { ObjectId } from 'mongodb';
 
 import Message from '../models/message';
 
@@ -21,7 +22,7 @@ const sendMessage = async (request: Request, response: Response) => {
 
 const receiveMessages = async (request: Request, response: Response) => {
   try {
-    const { receiver } = request.body;
+    const receiver = new ObjectId(request.params.id);
     const messages = await Message.find({
       receiver: {
         $all: receiver,

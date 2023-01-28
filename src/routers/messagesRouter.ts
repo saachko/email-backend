@@ -3,6 +3,6 @@ import { sendMessage, receiveMessages } from '../controllers/messagesController'
 
 const messagesRouter = express.Router();
 messagesRouter.post('/send', sendMessage);
-messagesRouter.get('/receive', receiveMessages);
+messagesRouter.get('/receive/:id', receiveMessages);
 
 export default messagesRouter;
