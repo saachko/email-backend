@@ -9,6 +9,7 @@
 - socket.io
 
 [Link to the server deploy](https://email-backend-hut3.onrender.com/)
+
 [Link to the app deploy](https://saachko.github.io/email-app/)
 
 ## Endpoints:
