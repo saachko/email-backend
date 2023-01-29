@@ -5,12 +5,14 @@ import Message from '../models/message';
 
 const sendMessage = async (request: Request, response: Response) => {
   try {
-    const { subject, body, sender, receiver } = request.body;
+    const { subject, body, sender, senderName, receiver, receiverName } = request.body;
     const newMessage = new Message({
       subject,
       body,
       sender,
+      senderName,
       receiver,
+      receiverName,
     });
     await newMessage.save();
     return response.json({ newMessage, message: 'Your message have been sent' });

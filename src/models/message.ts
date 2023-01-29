@@ -15,10 +15,16 @@ const messageScheme = new Schema(
       ref: 'User',
       required: true,
     },
+    senderName: {
+      type: String,
+    },
     receiver: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
+    },
+    receiverName: {
+      type: String,
     },
   },
   { timestamps: true, versionKey: false }
