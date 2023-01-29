@@ -36,7 +36,7 @@ const io = new Server<
   },
 });
 
-io.on('connection', (socket) => {
+io.on('connection', (socket: Socket) => {
   socket.on('send_message', (data: SocketData) => {
     socket.broadcast.emit('receive_message', data);
   });
