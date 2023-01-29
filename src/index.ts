@@ -1,11 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import http from 'http';
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 import corsResolver from './corsResolver';
 import messagesRouter from './routers/messagesRouter';
 import usersRouter from './routers/usersRouter';
+import { SocketData } from './interfaces';
 
 const PORT = 3001;
 
@@ -25,8 +26,8 @@ const io = new Server(server, {
   },
 });
 
-io.on('connection', (socket) => {
-  socket.on('send_message', (data) => {
+io.on('connection', (socket: Socket) => {
+  socket.on('send_message', (data: SocketData) => {
     socket.broadcast.emit('receive_message', data);
   });
 });
