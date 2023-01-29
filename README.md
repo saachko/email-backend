@@ -10,6 +10,8 @@
 
 > **Attention!** The backend is deployed on a free service render.com, so when you run the application for the first time, you need to wait a little bit. Thank you 🙏
 
+> To make sockets work turn on VPN, please.
+
 [Link to the server deploy](https://email-backend-hut3.onrender.com/)
 
 [Link to the app deploy](https://saachko.github.io/email-app/)
