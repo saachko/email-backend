@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import http from 'http';
+import https from 'https';
 import { Server, Socket } from 'socket.io';
 
 import corsResolver from './corsResolver';
@@ -21,7 +21,7 @@ app.use(corsResolver);
 app.use('/users', usersRouter);
 app.use('/messages', messagesRouter);
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 
 const io = new Server<
   ClientToServerEvents,
