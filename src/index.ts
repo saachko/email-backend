@@ -6,7 +6,12 @@ import { Server, Socket } from 'socket.io';
 import corsResolver from './corsResolver';
 import messagesRouter from './routers/messagesRouter';
 import usersRouter from './routers/usersRouter';
-import { SocketData } from './interfaces';
+import {
+  ServerToClientEvents,
+  ClientToServerEvents,
+  InterServerEvents,
+  SocketData,
+} from './interfaces';
 
 const PORT = 3001;
 
@@ -18,7 +23,12 @@ app.use('/messages', messagesRouter);
 
 const server = http.createServer(app);
 
-const io = new Server(server, {
+const io = new Server<
+  ClientToServerEvents,
+  ServerToClientEvents,
+  InterServerEvents,
+  SocketData
+>(server, {
   cors: {
     origin: 'http://localhost:3000',
     credentials: true,
@@ -26,7 +36,7 @@ const io = new Server(server, {
   },
 });
 
-io.on('connection', (socket: Socket) => {
+io.on('connection', (socket) => {
   socket.on('send_message', (data: SocketData) => {
     socket.broadcast.emit('receive_message', data);
   });

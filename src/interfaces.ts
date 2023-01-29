@@ -1,3 +1,13 @@
+interface ServerToClientEvents {
+  receive_message: (d: SocketData) => void;
+}
+
+interface ClientToServerEvents {
+  send_message: (d: SocketData) => void;
+}
+
+interface InterServerEvents {}
+
 interface SocketData {
   subject: string;
   body: string;
@@ -7,4 +17,4 @@ interface SocketData {
   receiverName: string;
 }
 
-export { SocketData };
+export { ServerToClientEvents, ClientToServerEvents, InterServerEvents, SocketData };
