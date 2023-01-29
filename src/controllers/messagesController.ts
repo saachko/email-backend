@@ -15,7 +15,7 @@ const sendMessage = async (request: Request, response: Response) => {
       receiverName,
     });
     await newMessage.save();
-    return response.json({ newMessage, message: 'Your message have been sent' });
+    return response.json({ newMessage, message: 'Your message has been sent' });
   } catch (error) {
     response.status(400).json({ message: "Message can't be sent" });
     throw new Error(`${error}`);
