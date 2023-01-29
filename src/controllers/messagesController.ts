@@ -22,6 +22,16 @@ const sendMessage = async (request: Request, response: Response) => {
   }
 };
 
+const getAllMessages = async (request: Request, response: Response) => {
+  try {
+    const messages = await Message.find().sort({ updatedAt: 1 });
+    return response.json(messages);
+  } catch (error) {
+    response.status(400).json({ message: "Messages can't be received" });
+    throw new Error(`${error}`);
+  }
+};
+
 const receiveMessages = async (request: Request, response: Response) => {
   try {
     const receiver = new ObjectId(request.params.id);
@@ -52,4 +62,4 @@ const getSentMessages = async (request: Request, response: Response) => {
   }
 };
 
-export { sendMessage, receiveMessages, getSentMessages };
+export { sendMessage, getAllMessages, receiveMessages, getSentMessages };
