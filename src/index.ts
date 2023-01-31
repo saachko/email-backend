@@ -30,7 +30,7 @@ const io = new Server<
   SocketData
 >(server, {
   cors: {
-    origin: 'https://saachko.github.io/email-app',
+    origin: '*',
     credentials: true,
     methods: ['GET', 'POST'],
   },
